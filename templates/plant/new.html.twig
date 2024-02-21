@@ -1,0 +1,12 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}New Plant{% endblock %}
+
+{% block body %}
+    <h1>Create new Plant</h1>
+    {% dump plantcatalogue %}
+    {{ include('plant/_form.html.twig') }}
+
+     </br>
+     <a href="{{ path('PlantCatalogue_show', {'id': plantcatalogue.id}) }}", button class="btn btn-primary">Back to list</a>
+{% endblock %}

@@ -1,0 +1,37 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Plant Catalogue index{% endblock %}
+
+{% block body %}
+    <h1>Plant Catalogue liste</h1>
+        
+        
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categrie  Name</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for plant in plant_catalogues %}
+            <tr>
+                <td>{{ plant.id }}</td>
+                <td>{{ plant.CategorieName }}</td>
+                
+                <td>
+                    <a href="{{ path('PlantCatalogue_show', {'id': plant.id}) }}", button class="btn btn-primary">show</a>
+                    {% if is_granted('ROLE_USER') %}
+                     <a href="{{ path('app_plant_catalogue_edit', {'id': plant.id}) }}", button class="btn btn-primary">edit</a>
+                    {% endif %}
+                    
+                </td>
+            </tr>
+    
+        {% endfor %}
+        </tbody>
+    </table>
+    
+{% endblock %}

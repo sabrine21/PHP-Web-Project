@@ -1,0 +1,19 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie{% endblock %}
+
+{% block body %}
+    <h2>Plants</h2>
+    <ul>
+        {% for plant in galerie.galerieobjet %}
+            <li>
+                <a href="{{ path('app_galerie_plant_show', {'galerie_id': galerie.id, 'plant_id': plant.id}) }}">
+                    {{ plant.Description }}
+                </a>
+            </li>
+        {% endfor %}
+    </ul>
+
+    <a href="{{ path('app_galerie_show', { 'id': galerie.id }) }}">back to galerie</a>
+{% endblock %}
+

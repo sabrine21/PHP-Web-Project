@@ -1,0 +1,32 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Mmeber index{% endblock %}
+
+{% block body %}
+    <h1>Liste des membresx</h1>
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nom</th>
+                <th>Description</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for member in members %}
+            <tr>
+                <td>{{ member.id }}</td>
+                <td>{{ member.Nom }}</td>
+                <td>{{ member.Description }}</td>  
+                <td>
+                    <a href="{{ path('member_show', {'id': member.id}) }}", button class="btn btn-primary">Show</a>
+                    
+                </td> 
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    
+{% endblock %}

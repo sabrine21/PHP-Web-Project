@@ -1,0 +1,36 @@
+{% extends 'base.html.twig' %}
+  {% block body %}
+      <h1>PlantCatalogue</h1>
+
+         {% dump plant_catalogue %}
+         
+      <table class="table">
+          <tbody>
+              <tr>
+                  <th>Id</th>
+                  <td>{{ plant_catalogue.id }}</td>
+              </tr>
+              <tr>
+                  <th>Categorie Name</th>
+                  <td>{{ plant_catalogue.CategorieName }}</td>
+              </tr>
+              <tr>
+                  <th>Plants</th>
+                  <td>
+                  <ul>
+                  {%  for plant in plant_catalogue.listeObjets %}
+                  <li>
+                  <a href="{{ path('Plant_show', {'id': plant.id}) }}">{{ plant.PlantName }}</a>
+                  </li>
+                  {% endfor %} {# plant_catalogue.listeObjets #}
+                  </ul> 
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <a href="{{ path('app_plant_new', {'id': plant_catalogue.id}) }}", button class="btn btn-primary">add new Plant</a>
+    
+      <a href="{{ path('member_show', {'id': plant_catalogue.getMember().id}) }}", button class="btn btn-primary">Back to list</a>
+
+  {% endblock %} {# body #} 
+{# ... #} 

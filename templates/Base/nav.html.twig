@@ -1,0 +1,42 @@
+<nav class="navbar navbar-expand-lg bg-primary" data-bs-theme="dark" >
+  <div class="container-fluid">
+    <a class="navbar-brand" href="#"><img src="/img/logoo.png" style="width: 90px; height: 50px;" >
+    </a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor01" aria-controls="navbarColor01" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarColor01">
+      <ul class="navbar-nav me-auto ">
+       
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('PlantCatalogue_list')}}" style="color:white;">Plant Categories</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('plant_list')}}" style="color:white;">Plants</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="{{path('app_galerie_index')}}" style="color:white;">Galerie</a>
+        </li>
+         <li class="nav-item">
+          <a class="nav-link" href="{{path('app_member_index')}}" style="color:white;">Members</a>
+        </li>
+       
+      </ul>
+      
+      <ul class="navbar-nav ms-auto" >
+        {% if app.user %}
+        <a class="nav-link" href="#" role="button" style="color:white;">
+            {{ app.user.email }}
+        </a>
+        <li class="nav-item">  
+            <a class="nav-link" href="{{ path('app_logout') }}" style="color:white;">Logout</a>
+        </li>
+        {% else %}
+        <a class="nav-link" href="{{ path('app_login') }}" style="color:white;">Login</a>
+       {% endif %}
+     </ul>
+
+      
+    </div>
+  </div>
+</nav>

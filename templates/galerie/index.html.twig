@@ -1,0 +1,43 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Galerie index{% endblock %}
+
+{% block body %}
+    <h1>Galerie index</h1>
+    {% dump member %}
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Description</th>
+                <th>Publiee</th>
+                <th>Actions</th>
+                
+            </tr>
+        </thead>
+        <tbody>
+        {% for galerie in galeries %}
+            <tr>
+                <td>{{ galerie.id }}</td>
+                <td>{{ galerie.Description }}</td>
+                <td>{{ galerie.Publiee ? 'Yes' : 'No' }}</td>
+                <td>
+                    <a href="{{ path('app_galerie_show', {'id': galerie.id})  }}", button class="btn btn-primary">show</a>
+                    {% if is_granted('ROLE_USER') %}
+                    <a href="{{ path('app_galerie_edit', {'id': galerie.id}) }}", button class="btn btn-primary">edit</a>
+                    {% endif %}
+                </td>
+                
+            </tr>
+        {% else %}
+            <tr>
+                <td colspan="4">no records found</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% if is_granted('ROLE_USER') %}
+    <a href="{{ path('app_galerie_new') }}", button class="btn btn-primary">Create new</a>
+     {% endif %}
+{% endblock %}
+

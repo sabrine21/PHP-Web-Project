@@ -1,0 +1,25 @@
+{% extends 'base.html.twig' %}
+  {% block body %}
+      <h1>Plant</h1>
+
+         {% dump plant %}
+<div class="card" style="width: 18rem; margin-left:35rem;" class="text-center">
+  <img src="/img/{{plant.getimg()}}" class="card-img-top" alt="...">
+  <div class="card-body">
+    <h5 class="card-title">{{ plant.PlantName }}</h5>
+    <p class="card-text">{{ plant.Description }}</p>
+  </div>
+   <ul class="list-group list-group-flush">
+                                <li class="list-group-item">{{ plant.getStock() }}</li>
+                                <li class="list-group-item">Prix: {{ plant.getPrix() }}</li>
+                                <li class="list-group-item" ><a href="{{ path('Plant_show', {'id': plant.id}) }}" ,button class="btn btn-primary">Show</a></li>
+                            </ul>
+  
+</div>
+       <a href="{{ path('PlantCatalogue_show', {'id': plant.categorie.id}) }}", button class="btn btn-primary">back to PlantCatalogue</a>
+         
+
+  {% endblock %} {# body #} 
+{# ... #} 
+
+
